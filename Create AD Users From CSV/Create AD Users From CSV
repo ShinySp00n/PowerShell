@@ -1,0 +1,26 @@
+Import-Module ActiveDirectory
+
+$filepath = Read-Host -Prompt "Please enter the csv file path: "
+$users = Import-Csv $filepath
+
+ForEach($user in $users){
+    $sID = $user.'StudentID'
+    $sEmail = $user.'Email'
+    $ou = $user.'Organizational Unit'
+    $sPassW = $user.'StudentPassW'
+
+    New-ADUser `
+     -Name $sID `
+     -GivenName $sID `
+     -DisplayName $sID `
+     -UserPrincipalName $sID `
+     -EmailAddress $sEmail `
+     -Path $ou `
+     -AccountPassword (ConvertTo-SecureString $sPassW -AsPlainText -Force) -PasswordNeverExpires $true `
+     -Enabled $true
+}
+
+Write-Host "Account Created "
+
+$total = ($users).count
+$total
