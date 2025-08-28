@@ -2,4 +2,4 @@ The script is used to mass create student accounts in AD. Their accounts will in
 
 Below is the column syntax for csv file.
 
-StudentID      Email      Organizational Unit      StudentPassW
+StudentID          Email          Organizational Unit          StudentPassW
